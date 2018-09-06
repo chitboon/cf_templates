@@ -1,0 +1,25 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  A simple stack
+
+Resources:
+  vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16     # required
+      Tags:                # optional, list of Tag
+        - Key: Application
+          Value: !Ref 'AWS::StackId'
+
+  public:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: us-west-2a     # optional
+      CidrBlock: 10.0.1.0/24     # required
+      MapPublicIpOnLaunch: TRUE     # optional
+      Tags:                # optional, list of Tag
+        - Key: Application
+          Value: !Ref 'AWS::StackId'
+      VpcId: !Ref vpc    # required
