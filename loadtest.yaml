@@ -220,8 +220,6 @@ Resources:
           #!/bin/bash -ex
           yum -y update
           yum -y install httpd php mysql php-mysql
-          chkconfig httpd on
-          /etc/init.d/httpd start
           if [ ! -f /var/www/html/lab-app.tgz ]; then
           cd /var/www/html
           wget https://us-west-2-tcprod.s3.amazonaws.com/courses/AWS-100-CCA/v3.1.11/lab6-alb/scripts/lab-app.tgz
